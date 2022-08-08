@@ -1,9 +1,8 @@
-pkgbase = musescore-git
+pkgbase = musescore-3.7-git
 	pkgdesc = Create, play and print beautiful sheet music (unreleased git 3.7 branch)
-	pkgver = 3.7.0.git.1659694499.8815d554248900ca3604172d7b2664b4d1962b4f
+	pkgver = r19763.8815d55424
 	pkgrel = 1
 	url = https://github.com/musescore/MuseScore
-	install = musescore.install
 	arch = x86_64
 	groups = pro-audio
 	license = GPL
@@ -35,8 +34,7 @@ pkgbase = musescore-git
 	optdepends = lame: MP3 export
 	provides = musescore
 	conflicts = musescore
-	conflicts = musescore-git
-	source = git+https://github.com/Jojo-Schmitz/MuseScore#branch=master-to-3.x
+	source = MuseScore-Jojo-Schmitz::git+https://github.com/Jojo-Schmitz/MuseScore#branch=master-to-3.x
 	md5sums = SKIP
 
-pkgname = musescore-git
+pkgname = musescore-3.7-git

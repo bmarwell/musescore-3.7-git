@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Marwell <bmarwell@gmail.com>
 
-pkgname=musescore-git
-pkgver=3.7.0.git.1659694499.8815d554248900ca3604172d7b2664b4d1962b4f
+pkgname=musescore-3.7-git
+pkgver=r19763.8815d55424
 pkgrel=1
 pkgdesc='Create, play and print beautiful sheet music (unreleased git 3.7 branch)'
 arch=(x86_64)
@@ -38,21 +38,19 @@ makedepends=(
   texlive-core
 )
 optdepends=('lame: MP3 export')
-conflicts=('musescore' 'musescore-git')
+conflicts=('musescore')
 provides=('musescore')
-install=musescore.install
 _branch=master-to-3.x
-source=(git+https://github.com/Jojo-Schmitz/MuseScore#branch=${_branch})
+source=("MuseScore-Jojo-Schmitz::git+https://github.com/Jojo-Schmitz/MuseScore#branch=${_branch}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd MuseScore
-  commit=$(git show -s --format=%ct.%H HEAD)
-  echo "3.7.0.git.$commit"
+  cd MuseScore-Jojo-Schmitz
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -S MuseScore -B build \
+  cmake -S MuseScore-Jojo-Schmitz -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_CRASH_REPORTER=OFF \
@@ -69,8 +67,7 @@ build() {
 }
 
 package() {
-  cd MuseScore
-  make DESTDIR="${pkgdir}" SUFFIX="-git" LABEL="Git Build" install -C build.release
+  make DESTDIR="${pkgdir}" LABEL="Git Build" install -C build
 }
 
 # vim: ts=2 sw=2 et:
