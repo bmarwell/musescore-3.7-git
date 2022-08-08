@@ -1,0 +1,6 @@
+MuseScore/
+pkg/
+src/
+*.tgz
+*.tar.xz
+*.tar.gz
