@@ -40,7 +40,7 @@ makedepends=(
 optdepends=('lame: MP3 export')
 conflicts=('musescore')
 provides=('musescore')
-_branch=master-to-3.x
+_branch=3.x
 source=("MuseScore-Jojo-Schmitz::git+https://github.com/Jojo-Schmitz/MuseScore#branch=${_branch}")
 md5sums=('SKIP')
 
